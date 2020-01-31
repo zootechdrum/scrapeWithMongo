@@ -21,19 +21,19 @@ axios.get("https://www.cracked.com/").then(function(response) {
   // $('a[title]','.content-cards-info')
   // With cheerio, find each p-tag with the "title" class
   // (i: iterator. element: the current element)
-     $('[title]','#content-list').each(function(i, element) {
+      $('h3').children('a[title]','.content-cards-info').each(function(i, element) {
 
     // Save the text of the element in a "title" variable
     var title = $(element).text();
 
     // In the currently selected element, look at its child elements (i.e., its a-tags),
     // then save the values for any "href" attributes that the child elements may have
-    // var link = $(element).children().attr("href");
+    var link = $(element).attr("href");
 
     // Save these results in an object that we'll push into the results array we defined earlier
     results.push({
       title: title,
-      // link: link
+      link: link
     });
   });
 
