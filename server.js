@@ -18,10 +18,10 @@ axios.get("https://www.cracked.com/").then(function(response) {
 
   // An empty array to save the data that we'll scrape
   var results = [];
-
+  // $('a[title]','.content-cards-info')
   // With cheerio, find each p-tag with the "title" class
   // (i: iterator. element: the current element)
-  $('content-cards-wrapper','a[title]').each(function(i, element) {
+     $('[title]','#content-list').each(function(i, element) {
 
     // Save the text of the element in a "title" variable
     var title = $(element).text();
@@ -32,7 +32,8 @@ axios.get("https://www.cracked.com/").then(function(response) {
 
     // Save these results in an object that we'll push into the results array we defined earlier
     results.push({
-      title: title
+      title: title,
+      // link: link
     });
   });
 
