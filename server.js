@@ -17,16 +17,17 @@ axios.get("https://www.cracked.com/").then(function(response) {
 $('.content-cards-wrapper').each(function(i, element) {
   
 
-
+    var title = $(element).children('.content-cards-info').text()
     var link = $(element).children().attr('href')
    // Save the text of the element in a "title" variable
-    var image = $('.content-cards-image').attr("data-original");
+    var image = $(element).children().attr("data-original");
 
 
     // Save these results in an object that we'll push into the results array we defined earlier
     results.push({
       link: link,
       image: image,
+      title: title
     });
   });
 
