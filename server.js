@@ -24,11 +24,13 @@ $('.content-cards-wrapper').each(function(i, element) {
 
 
     // Save these results in an object that we'll push into the results array we defined earlier
-    results.push({
-      link: link,
-      image: image,
-      title: title
-    });
+    if(link !== undefined && image !== undefined && title !== undefined){
+      results.push({
+        link: link,
+        image: image,
+        title: title
+      });
+  }
   });
 
   // Log the results once you've looped through each of the elements found with cheerio
