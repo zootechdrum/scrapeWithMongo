@@ -16,10 +16,9 @@ axios.get("https://www.cracked.com/").then(function(response) {
 
 $('.content-cards-wrapper').each(function(i, element) {
   
-
+// Grabs the title, image and link from cracked
     var title = $(element).children('.content-cards-info').text()
     var link = $(element).children().attr('href')
-   // Save the text of the element in a "title" variable
     var image = $(element).children().attr("data-original");
 
 
@@ -30,7 +29,7 @@ $('.content-cards-wrapper').each(function(i, element) {
         image: image,
         title: title
       });
-  }
+    }
   });
 
   // Log the results once you've looped through each of the elements found with cheerio
