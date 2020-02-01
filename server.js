@@ -18,14 +18,14 @@ $('.content-cards-wrapper').each(function(i, element) {
   
 
 
-    var title = $(element).children('a[title]').val()
+    var link = $(element).children().attr('href')
    // Save the text of the element in a "title" variable
     var image = $('.content-cards-image').attr("data-original");
 
 
     // Save these results in an object that we'll push into the results array we defined earlier
     results.push({
-      title: title,
+      link: link,
       image: image,
     });
   });
