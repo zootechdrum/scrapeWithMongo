@@ -19,7 +19,7 @@ var app = express();
 // Use morgan logger for logging requests
 app.use(logger("dev"));
 
-mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true, useUnifiedTopology: true });
 
 
 
@@ -63,6 +63,12 @@ app.get("/scrape", function (req, res) {
   res.send("Scrape Complete");
   })
 })
+
+// Start the server
+app.listen(PORT, function() {
+  console.log("App running on port " + PORT + "!");
+});
+
 
 //   app.get("/scrape", function(req, res) {
 //     // First, we grab the body of the html with axios
