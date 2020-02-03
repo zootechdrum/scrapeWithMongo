@@ -15,15 +15,16 @@ var PORT = 3000;
 // Initialize Express
 var app = express();
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+// Make public a static folder
+app.use(express.static("public"));
+
 // Configure middleware
 // Use morgan logger for logging requests
 app.use(logger("dev"));
 
 mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true, useUnifiedTopology: true });
-
-
-
-
 
 
 // An empty array to save the data that we'll scrape
