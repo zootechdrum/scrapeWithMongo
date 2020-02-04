@@ -38,7 +38,7 @@ app.get("/scrape", function (req, res) {
       var result = {};
 
       // Grabs the title, image and link from cracked
-      var title = $(element).children('.content-cards-info').text()
+      var title = $(element).children().children().children().text()
       var link = $(element).children().attr('href')
       var image = $(element).children().attr("data-original");
 
