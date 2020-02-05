@@ -38,10 +38,9 @@ app.get("/scrape", function (req, res) {
       var result = {};
 
       // Grabs the title, image and link from cracked
-      var title = $(element).children().children().children().text()
-      var link = $(element).children().attr('href')
-      var image = $(element).children().attr("data-original");
-
+      var title = $(this).children('.content-cards-info').children('h3').children('a').text()
+      var link = $(element).children('a').attr('href')
+      var image = $(element).children('a').attr('data-original')
 
       // Save these results in an object that we'll push into the results array we defined earlier
       if (link !== undefined && image !== undefined && title !== undefined) {
