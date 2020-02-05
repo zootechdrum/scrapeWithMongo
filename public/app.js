@@ -6,7 +6,7 @@ $( document ).ready(function() {
     for (var i = 0; i < data.length; i++) {
       // Display the apropos information on the page
       $(".content-wrapper").append(
-        "<<img src = " + data[i].image + " >" +
+        "<img src = " + data[i].image + " >" +
         "<div class='content-item' ><a data-id= " + data[i]._id + " href= " + data[i].link +  " > " + data[i].title + "</a></div>"
       );
     }
