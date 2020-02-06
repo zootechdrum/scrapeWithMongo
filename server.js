@@ -39,14 +39,14 @@ app.get("/scrape", function (req, res) {
 
       // Grabs the title, image and link from cracked
       var title = $(this).children('.content-cards-info').children('h3').children('a').text()
-      var link = $(element).children('a').attr('href')
-      var image = $(element).children('a').attr('data-original')
+      var link = $(this).children('a').attr('href')
+      var image = $(this).children('a').attr('data-original')
 
       // Save these results in an object that we'll push into the results array we defined earlier
       if (link !== undefined && image !== undefined && title !== undefined) {
           result.title = title,
           result.link = link,
-          result.image = image
+          result.image = image,
 
       //Second call to axios based on link parameter in results object
       axios.get(result.link).then(function (response) {
@@ -59,7 +59,6 @@ app.get("/scrape", function (req, res) {
 
           result.description = description
 
-          console.log(result)
 
           db.Article.insertMany(result)
             .then(function (dbArticle) {
@@ -100,39 +99,3 @@ app.listen(PORT, function () {
 });
 
 
-//   app.get("/scrape", function(req, res) {
-//     // First, we grab the body of the html with axios
-//     axios.get("http://www.echojs.com/").then(function(response) {
-//       // Then, we load that into cheerio and save it to $ for a shorthand selector
-//       var $ = cheerio.load(response.data);
-
-//       // Now, we grab every h2 within an article tag, and do the following:
-//       $("article h2").each(function(i, element) {
-//         // Save an empty result object
-//         var result = {};
-
-//         // Add the text and href of every link, and save them as properties of the result object
-//         result.title = $(this)
-//           .children("a")
-//           .text();
-//         result.link = $(this)
-//           .children("a")
-//           .attr("href");
-
-//         // Create a new Article using the `result` object built from scraping
-//         db.Article.create(result)
-//           .then(function(dbArticle) {
-//             // View the added result in the console
-//             console.log(dbArticle);
-//           })
-//           .catch(function(err) {
-//             // If an error occurred, log it
-//             console.log(err);
-//           });
-//       });
-
-//       // Send a message to the client
-//       res.send("Scrape Complete");
-//     });
-//   });
-// }
