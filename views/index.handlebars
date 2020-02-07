@@ -10,6 +10,14 @@
     </div>
 </article>
 
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+
+
+
+
   {{#unless blogs}}
     <article class="alert alert-danger">
         <h1 class="p-3">
@@ -23,14 +31,14 @@
 
 {{#if blogs}}
 {{#each blogs}}
-<div class="card mb-3" style="max-width: 740px;">
+<div class="card mb-3">
   <div class="row no-gutters">
     <div class="col-md-4">
-      <img src="{{this.image}}" class="card-img" alt="..." />
+      <a href = {{this.link}}><img src="{{this.image}}" class="card-img" alt="..." /></a>
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">{{this.title}}</h5>
+        <a href={{this.link}}><h5 class="card-title">{{this.title}}</h5></a>
         <p class="card-text"> {{this.description}}</p>
       </div>
     </div>
@@ -39,3 +47,6 @@
 
 {{/each}}
 {{/if}}
+</div>
+  </div>
+</div>
