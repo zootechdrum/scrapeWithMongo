@@ -10,3 +10,14 @@
 
     </div>
 </article>
+
+  {{#unless blog}}
+  <article class="mw7 center ph3 ph5-ns tc br2 pv5 mb5">
+    <h1 class="fw6 f3 f2-ns lh-title mt0 mb3">
+      Looks like you haven't scraped the web yet.
+    </h1>
+    <h2 class="fw2 f4 lh-copy mt0 mb3">
+      Go hit the scrape button on the banner and see what comes up!
+    </h2>
+  </article>
+  {{/unless}}

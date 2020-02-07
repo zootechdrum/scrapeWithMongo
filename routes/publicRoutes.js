@@ -5,8 +5,10 @@ const db = require("../models");
 module.exports = function (app) {
 
     app.get("/", function (req, res) {
-        db.Article.find({}).sort({ _id: -1 }).then(function (dbNews) {
-            res.render("index");
+        db.Article.find({}).sort({ _id: -1 }).then(function (dbBlogs) {
+            res.render("index", {
+                blogs: dbBlogs
+            });
         });
     });
 
