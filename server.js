@@ -1,6 +1,7 @@
 var express = require("express");
 var logger = require("morgan");
 var mongoose = require("mongoose");
+const exphbs = require("express-handlebars");
 
 // Our scraping tools
 // Axios is a promised-based http library, similar to jQuery's Ajax method
@@ -8,9 +9,8 @@ var mongoose = require("mongoose");
 var axios = require("axios");
 var cheerio = require("cheerio");
 
-var exphbs = require("express-handlebars");
-
-
+// Initialize Express
+var app = express();
 
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
@@ -20,8 +20,7 @@ app.set("view engine", "handlebars");
 var db = require("./models");
 var PORT = 3000;
 
-// Initialize Express
-var app = express();
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

@@ -3,6 +3,13 @@ const cheerio = require("cheerio");
 const db = require("../models");
 
 module.exports = function (app) {
+
+    app.get("/", function (req, res) {
+        db.Article.find({}).sort({ _id: -1 }).then(function (dbNews) {
+            res.render("index");
+        });
+    });
+
 app.get("/scrape", function (req, res) {
     axios.get("https://www.cracked.com/").then(function (response) {
       var $ = cheerio.load(response.data);
