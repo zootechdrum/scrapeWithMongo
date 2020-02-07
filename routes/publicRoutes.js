@@ -57,8 +57,13 @@ app.get("/scrape", function (req, res) {
       }
       });
   
-      res.send("Scrape Complete");
+      function redirect() {
+        res.redirect("/")
+      }
+      
+      setTimeout(myFunc, 5000);
     })
+
   })
   
   // Route for getting all Articles from the db

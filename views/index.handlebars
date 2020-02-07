@@ -2,7 +2,7 @@
     <div class="jumbotron">
      <div class="container spaces">
          <div class="d-flex justify-content-end">
-         <button type="button" class="scrape-btn btn btn-info">Scrape Cracked</button>
+         <a href= "/scrape"><button type="button" class="scrape-btn btn btn-info">Scrape Cracked</button></a>
          <button type="button" class="json-btn btn btn-info">Cracked JSON</button>
          </div>
 
@@ -12,12 +12,18 @@
 </article>
 
   {{#unless blog}}
-  <article class="mw7 center ph3 ph5-ns tc br2 pv5 mb5">
-    <h1 class="fw6 f3 f2-ns lh-title mt0 mb3">
+  <article class="alert alert-danger">
+    <h1 class="p-3">
       Looks like you haven't scraped the web yet.
     </h1>
-    <h2 class="fw2 f4 lh-copy mt0 mb3">
-      Go hit the scrape button on the banner and see what comes up!
+    <h2 class="p-3 mb3">
+      Scrape Craked by clicking the button "Scrape Cracked"
     </h2>
   </article>
   {{/unless}}
+
+  {{#if blog}}
+
+
+
+  {{/blog}}
