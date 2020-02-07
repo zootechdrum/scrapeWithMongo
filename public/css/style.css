@@ -3,3 +3,13 @@
     height:100px;
     width: 100px;
 }
+
+.jumbotron {
+    background-image: url("../image/blog-success.jpeg");
+    background-size: auto 100%;
+    background-repeat: no-repeat;    
+}
+
+.scrape-btn, .json-btn {
+    margin:5px;
+}
