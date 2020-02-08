@@ -1,52 +1,59 @@
 <article>
-    <div class="jumbotron">
-     <div class="container spaces">
-         <div class="d-flex justify-content-end">
-         <a href= "/scrape"><button type="button" class="scrape-btn btn btn-info">Scrape Cracked</button></a>
-         <button type="button" class="json-btn btn btn-info">Cracked JSON</button>
-         </div>
+  <div class="jumbotron">
+    <div class="container spaces">
+      <div class="d-flex justify-content-end">
+        <a href="/scrape">
+          <button type="button" class="scrape-btn btn btn-info">Scrape Cracked</button>
+        </a>
+        <button type="button" class="json-btn btn btn-info">Cracked JSON</button>
+      </div>
 
-     </div>
     </div>
+  </div>
 </article>
 
 <div class="container">
   <div class="row">
-    <div class="col">
-
-
-
-
-
-  {{#unless blogs}}
-    <article class="alert alert-danger">
+    <div class="col-lg-8">
+      {{#unless blogs}}
+      <article class="alert alert-danger">
         <h1 class="p-3">
-        Looks like you haven't scraped the web yet.
+          Looks like you haven't scraped the web yet.
         </h1>
         <h2 class="p-3 mb3">
-        Scrape Craked by clicking the button "Scrape Cracked"
+          Scrape Craked by clicking the button "Scrape Cracked"
         </h2>
-    </article>
-  {{/unless}}
+      </article>
+      {{/unless}}
 
-{{#if blogs}}
-{{#each blogs}}
-<div class="card mb-3">
-  <div class="row no-gutters">
-    <div class="col-md-4">
-      <a href = {{this.link}}><img src="{{this.image}}" class="card-img" alt="..." /></a>
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <a href={{this.link}}><h5 class="card-title">{{this.title}}</h5></a>
-        <p class="card-text"> {{this.description}}</p>
+      {{#if blogs}} 
+      {{#each blogs}}
+      <div class="card mb-3">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <a href={ {this.link}}>
+              <img src="{{this.image}}" class="card-img" alt="..." />
+            </a>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <a href={{this.link}}>
+                <h5 class="card-title">{{this.title}}</h5>
+              </a>
+              <p class="card-text"> {{this.description}}</p>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
 
-{{/each}}
-{{/if}}
-</div>
+      {{/each}} 
+      {{/if}}
+    </div>
+      <div class="col-lg-4">
+        <header class="text-center">
+           <h6 class="comment-title">Comments for Article</h6>
+        </header>
+
+      </div>
   </div>
 </div>
