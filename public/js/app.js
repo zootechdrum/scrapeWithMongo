@@ -1,7 +1,6 @@
 $(document).ready(function () {
   // Grab the articles as a json
   $.getJSON("/articles", function (data) {
-    console.log(data)
 
     for (var i = 0; i < data.length; i++) {
       // Display the apropos information on the page
@@ -12,10 +11,25 @@ $(document).ready(function () {
     }
   });
 
+  $(document).on("click", ".deleteArticles-btn", function () {
+
+    var thisId = $(this).attr("data-id");
+
+    // Now make an ajax call for the Article
+    $.ajax({
+      method:'DELETE',
+      url: "/articles"
+    })
+      // With that done, add the note information to the page
+      .then(function (data) {
+
+      });
+  });
+
 
 
   $(document).on("click", ".comment-btn", function () {
-    
+
     var thisId = $(this).attr("data-id");
 
     // Now make an ajax call for the Article
@@ -25,40 +39,52 @@ $(document).ready(function () {
     })
       // With that done, add the note information to the page
       .then(function (data) {
-        console.log(data);
 
+        if (data.comment.length === 0) {
+          $('.comment-section').empty()
+          $(".comment-section").append("<div class='alert alert-warning'>No comments exist for post</div>")
+        }else{
+
+        $('.comment-section').empty()
+        for (var i = 0; i < data.comment.length; i++) {
+          $(".comment-section").append(
+            "<p>" + data.comment[i].body + " </p>"
+          );
+        }
+      }
       });
   });
 
 
-$(document).on("click", ".write-btn", function () {
- $('.comment-section').empty()
-    
-  var thisId = $(this).attr("data-id");
+  $(document).on("click", ".write-btn", function () {
+    $('.comment-section').empty()
 
-  var input = $("<input class= commentInput type='text' value='Write Comment'>")
-  var submitBtn = $("<div><button data-id=" + thisId + " class='comment-submit btn btn-info' >Submit</button></div>")
-  $(".comment-section").append(input)
-  $(".comment-section").append(submitBtn)
+    var thisId = $(this).attr("data-id");
+
+    var input = $("<input class= commentInput type='text' value='Write Comment'>")
+    var submitBtn = $("<div><button data-id=" + thisId + " class='comment-submit btn btn-info' >Submit</button></div>")
+    $(".comment-section").append(input)
+    $(".comment-section").append(submitBtn)
 
   });
 
 
-$(document).on("click", ".comment-submit", function () {
-  var thisId = $(this).attr("data-id");
+  $(document).on("click", ".comment-submit", function () {
+    var thisId = $(this).attr("data-id");
 
     $.ajax({
-    method: "POST",
-    url: "/articles/" + thisId,
-    data: {
-      body: $(".commentInput").val()
-      // Value taken from comment textarea
-    }
-  })
-    // With that done
-    .then(function(data) {
-      // Log the response
-      console.log(data);
-    });
-   });
- });
+      method: "POST",
+      url: "/articles/" + thisId,
+      data: {
+        body: $(".commentInput").val()
+        // Value taken from comment textarea
+      }
+    })
+      // With that done
+      .then(function (data) {
+        $('.comment-section').empty()
+        $(".comment-section").append("<div class='alert alert-success'>Comment submitted</div>")
+
+      });
+  });
+});
