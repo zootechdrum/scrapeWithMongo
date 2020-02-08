@@ -36,7 +36,7 @@ $(document).on("click", ".write-btn", function () {
     
   var thisId = $(this).attr("data-id");
 
-  var input = $("<input type='text' value='Write Comment'>")
+  var input = $("<input class= commentInput type='text' value='Write Comment'>")
   var submitBtn = $("<div><button data-id=" + thisId + " class='comment-submit btn btn-info' >Submit</button></div>")
   $(".comment-section").append(input)
   $(".comment-section").append(submitBtn)
@@ -45,7 +45,20 @@ $(document).on("click", ".write-btn", function () {
 
 
 $(document).on("click", ".comment-submit", function () {
-  
- 
+  var thisId = $(this).attr("data-id");
+
+    $.ajax({
+    method: "POST",
+    url: "/articles/" + thisId,
+    data: {
+      body: $(".commentInput").val()
+      // Value taken from comment textarea
+    }
+  })
+    // With that done
+    .then(function(data) {
+      // Log the response
+      console.log(data);
+    });
    });
  });
