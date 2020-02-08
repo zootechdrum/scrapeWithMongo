@@ -28,10 +28,10 @@
 
       {{#if blogs}} 
       {{#each blogs}}
-      <div class="card mb-3">
+      <div data-id = {{this._id}} class="card mb-3 content-item">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <a href={ {this.link}}>
+            <a href={{this.link}}>
               <img src="{{this.image}}" class="card-img" alt="..." />
             </a>
           </div>
