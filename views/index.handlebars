@@ -28,7 +28,7 @@
 
       {{#if blogs}} 
       {{#each blogs}}
-      <div data-id = {{this._id}} class="card mb-3 content-item">
+      <div  class="card mb-4 content-item">
         <div class="row no-gutters">
           <div class="col-md-4">
             <a href={{this.link}}>
@@ -41,9 +41,12 @@
                 <h5 class="card-title">{{this.title}}</h5>
               </a>
               <p class="card-text"> {{this.description}}</p>
+             <button data-id = {{this._id}} type="button" class="comment-btn btn btn-info">See Comments</button>
+             <button data-id = {{this._id}} type="button" class="write-btn btn btn-info">Write Comment</button>
             </div>
           </div>
         </div>
+
       </div>
 
       {{/each}} 
@@ -52,7 +55,12 @@
       <div class="col-lg-4">
         <header class="text-center">
            <h6 class="comment-title">Comments for Article</h6>
+           <div class="comment-section">
+             
+           </div>
         </header>
+        <article>
+        </article>
 
       </div>
   </div>
