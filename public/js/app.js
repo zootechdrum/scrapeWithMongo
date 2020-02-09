@@ -22,7 +22,7 @@ $(document).ready(function () {
     })
       // With that done, add the note information to the page
       .then(function (data) {
-
+        location.reload('index.html')
       });
   });
 
@@ -49,7 +49,7 @@ $(document).ready(function () {
         for (var i = 0; i < data.comment.length; i++) {
           $(".comment-section").append(
             "<p>" + data.comment[i].body + " </p>"
-          );
+          ).after("</hr>");
         }
       }
       });
@@ -57,11 +57,12 @@ $(document).ready(function () {
 
 
   $(document).on("click", ".write-btn", function () {
+
     $('.comment-section').empty()
 
     var thisId = $(this).attr("data-id");
 
-    var input = $("<input class= commentInput type='text' value='Write Comment'>")
+    var input = $("<input class= commentInput type='text' placeholder='Write Comment' required>")
     var submitBtn = $("<div><button data-id=" + thisId + " class='comment-submit btn btn-info' >Submit</button></div>")
     $(".comment-section").append(input)
     $(".comment-section").append(submitBtn)
@@ -72,11 +73,17 @@ $(document).ready(function () {
   $(document).on("click", ".comment-submit", function () {
     var thisId = $(this).attr("data-id");
 
+    var inputValue = $(".commentInput").val()
+
+    if(!inputValue){
+      return
+    }
+
     $.ajax({
       method: "POST",
       url: "/articles/" + thisId,
       data: {
-        body: $(".commentInput").val()
+        body: inputValue
         // Value taken from comment textarea
       }
     })

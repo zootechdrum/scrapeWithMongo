@@ -87,9 +87,7 @@ module.exports = function (app) {
         // Grab every document in the Articles collection
         db.Article.remove({}).then(function (data) {
             console.log(data)
-            res.render("index", {
-                blogs: {}
-            });
+            res.send(data)
         })
     });
 
