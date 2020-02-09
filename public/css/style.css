@@ -16,6 +16,7 @@
 
 .comment {
     border-radius: 5px;
+    padding: 5px;
 }
 
 .content-item {
@@ -42,5 +43,7 @@
 .comment-section {
     min-height: 300px;
     max-height: 500px;
+    max-width: 500px;
+    word-wrap: break-word;
     overflow: auto;
 }
