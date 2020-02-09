@@ -7,7 +7,8 @@
         </a>
         <button type="button" class="deleteArticles-btn btn btn-danger">Delete All</button>
         <a href="/saved">
-          <button type="button" class="scrape-btn btn btn-info"><i class="fas fa-save"></i> Articles</button>
+          <button type="button" class="scrape-btn btn btn-info">
+            <i class="fas fa-save"></i> Articles</button>
         </a>
       </div>
 
@@ -27,49 +28,51 @@
           Scrape Craked by clicking the button "Scrape Cracked"
         </h2>
       </article>
-      {{/unless}}
-
-      {{#if blogs}} 
+      {{/unless}} {{#if blogs}}
       <div class="wrapper">
-      {{#each blogs}}
-      <div  class="card mb-4 content-item">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <a href={{this.link}}>
-              <img src="{{this.image}}" class="card-img" alt="..." />
-            </a>
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
+        {{#each blogs}}
+        <div class="card mb-4 content-item">
+          <div class="row no-gutters">
+            <div class="col-md-4">
               <a href={{this.link}}>
-                <h5 class="card-title">{{this.title}}</h5>
+                <img src="{{this.image}}" class="card-img" alt="..." />
               </a>
-              <p class="card-text"> {{this.description}}</p>
-             <button data-id = {{this._id}} type="button" class="comment-btn btn btn-info">See Comments</button>
-             <button data-id = {{this._id}} type="button" class="write-btn btn btn-info">Write Comment</button>
-             <button data-id = {{this._id}} type="button" class="btn save-btn btn-warning"> <i class="fas fa-save"></i></button>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <a href={{this.link}}>
+                  <h5 class="card-title">{{this.title}}</h5>
+                </a>
+                <p class="card-text"> {{this.description}}</p>
+                <div class="buttons text-center">
+                  <button data-id={ {this._id}} type="button" class="comment-btn btn btn-info">See Comments</button>
+                  <button data-id={ {this._id}} type="button" class="write-btn btn btn-info">Write Comment</button>
+                  <button data-id={ {this._id}} type="button" class="btn save-btn btn-warning">
+                    <i class="fas fa-save"></i>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
+
         </div>
 
-      </div>
-
-      {{/each}} 
+        {{/each}}
       </div>
       {{/if}}
     </div>
 
-      <div  class="col-lg-4">
-        <header class="text-center">
-           <h6 class="comment-title">Comments for Article</h6>
-           <div class="comment-section">
+    <div class="col-lg-4">
+      <header class="text-center">
+        <h6 class="comment-title">Comments for Article</h6>
+        <div class="comment-section">
 
-           </div>
-        </header>
-        <article>
-        </article>
+        </div>
+      </header>
+      <article>
+      </article>
 
-      </div>
+    </div>
 
   </div>
 </div>

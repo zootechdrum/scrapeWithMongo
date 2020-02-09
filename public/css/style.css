@@ -31,6 +31,8 @@
     height:100%;
 }
 
+
+
 .comment-submit {
     margin-top:10px;
 }
@@ -52,5 +54,9 @@
     .jumbotron {
         background-image: none;
     
+    }
+    .save-btn {
+        width:100%;
+        margin-top: 10px;
     }
   }
