@@ -49,7 +49,7 @@ $(document).ready(function () {
           $('.comment-section').empty()
           for (var i = 0; i < data.comment.length; i++) {
             $(".comment-section").append(
-              "<p>" + data.comment[i].body + " </p>"
+              "<p class='comment alert-dark'>" + data.comment[i].body + " </p>"
             ).after("</hr>");
           }
         }

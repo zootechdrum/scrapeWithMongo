@@ -69,6 +69,32 @@ module.exports = function (app) {
 
     })
 
+    db.books.find({ read: true }, function(error, found) {
+        // Show any errors
+        if (error) {
+          console.log(error);
+        }
+        else {
+          // Otherwise, send the books we found to the browser as a json
+          res.json(found);
+        }
+      });
+
+        // Route for getting all Articles from the db
+        app.get("/saved", function (req, res) {
+            // Grab every document in the Articles collection
+            db.Article.find({saved: true})
+                .then(function (savedArt) {
+                    res.render("saved", {
+                        blogs: savedArt
+                    });;
+                })
+                .catch(function (err) {
+                    // If an error occurred, send it to the client
+                    res.json(err);
+                });
+        });
+
     // Route for getting all Articles from the db
     app.get("/articles", function (req, res) {
         // Grab every document in the Articles collection
