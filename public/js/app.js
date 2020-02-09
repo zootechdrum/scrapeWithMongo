@@ -17,7 +17,7 @@ $(document).ready(function () {
 
     // Now make an ajax call for the Article
     $.ajax({
-      method:'DELETE',
+      method: 'DELETE',
       url: "/articles"
     })
       // With that done, add the note information to the page
@@ -44,15 +44,15 @@ $(document).ready(function () {
         if (data.comment.length === 0) {
           $('.comment-section').empty()
           $(".comment-section").append("<div class='alert alert-warning'>No comments exist for post</div>")
-        }else{
+        } else {
 
-        $('.comment-section').empty()
-        for (var i = 0; i < data.comment.length; i++) {
-          $(".comment-section").append(
-            "<p>" + data.comment[i].body + " </p>"
-          ).after("</hr>");
+          $('.comment-section').empty()
+          for (var i = 0; i < data.comment.length; i++) {
+            $(".comment-section").append(
+              "<p>" + data.comment[i].body + " </p>"
+            ).after("</hr>");
+          }
         }
-      }
       });
   });
 
@@ -76,7 +76,7 @@ $(document).ready(function () {
 
     var inputValue = $(".commentInput").val()
 
-    if(!inputValue){
+    if (!inputValue) {
       return
     }
 
@@ -95,4 +95,19 @@ $(document).ready(function () {
 
       });
   });
+
+// When flopy disk is clicked on the article will be marked as saved
+  $(document).on("click", ".save-btn", function () {
+    var thisId = $(this).attr("data-id");
+
+    $.ajax({
+      method: "PUT",
+      url: "/markSaved/" + thisId,
+    })
+      // With that done
+      .then(function (data) {
+        console.log(data)
+      });
+  });
+
 });

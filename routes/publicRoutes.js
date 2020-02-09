@@ -128,18 +128,19 @@ app.post("/articles/:id", function(req, res) {
   });
 // Mark a Article as having been Saved
 app.put("/markSaved/:id", function(req, res) {
+    console.log('route hit')
 
   
     // Update a doc in the article collection with an ObjectId matching
     // the id parameter in the url
-    db.books.update(
+    db.Article.update(
       {
-        _id: mongojs.ObjectId(req.params.id)
+        _id: req.params.id
       },
       {
         // Set "saved" to true for the article we specified
         $set: {
-          read: true
+          saved: true
         }
       },
       // When that's done, run this function
