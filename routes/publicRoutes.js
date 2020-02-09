@@ -64,7 +64,7 @@ module.exports = function (app) {
                 res.redirect("/")
             }
 
-            setTimeout(redi, 5000);
+            setTimeout(redi, 3000);
         })
 
     })

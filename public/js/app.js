@@ -31,6 +31,7 @@ $(document).ready(function () {
   $(document).on("click", ".comment-btn", function () {
 
     var thisId = $(this).attr("data-id");
+    console.log(thisId + " hello")
 
     // Now make an ajax call for the Article
     $.ajax({
@@ -39,6 +40,7 @@ $(document).ready(function () {
     })
       // With that done, add the note information to the page
       .then(function (data) {
+        console.log(data)
 
 
         if (data.comment.length === 0) {
