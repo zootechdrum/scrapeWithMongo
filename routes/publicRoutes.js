@@ -126,4 +126,38 @@ app.post("/articles/:id", function(req, res) {
         res.json(err);
       });
   });
+// Mark a Article as having been Saved
+app.put("/markSaved/:id", function(req, res) {
+
+  
+    // Update a doc in the article collection with an ObjectId matching
+    // the id parameter in the url
+    db.books.update(
+      {
+        _id: mongojs.ObjectId(req.params.id)
+      },
+      {
+        // Set "saved" to true for the article we specified
+        $set: {
+          read: true
+        }
+      },
+      // When that's done, run this function
+      function(error, edited) {
+        // show any errors
+        if (error) {
+          console.log(error);
+          res.send(error);
+        }
+        else {
+          // Otherwise, send the result of our update to the browser
+          console.log(edited);
+          res.send(edited);
+        }
+      }
+    );
+  });
+
+
+
 }

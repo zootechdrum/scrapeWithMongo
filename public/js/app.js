@@ -40,6 +40,7 @@ $(document).ready(function () {
       // With that done, add the note information to the page
       .then(function (data) {
 
+
         if (data.comment.length === 0) {
           $('.comment-section').empty()
           $(".comment-section").append("<div class='alert alert-warning'>No comments exist for post</div>")
