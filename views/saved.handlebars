@@ -2,5 +2,61 @@
   <div class="container d-flex justify-content-end">
     <h1 class="display-4">Saved Articles</h1>
 
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      {{#unless blogs}}
+      <article class="alert alert-danger">
+        <h1 class="p-3">
+          You have not saved any articles!
+        </h1>
+      </article>
+      {{/unless}}
+
+      {{#if saved}} 
+      <div class="wrapper">
+      {{#each saved}}
+      <div  class="card mb-4 content-item">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <a href={{this.link}}>
+              <img src="{{this.image}}" class="card-img" alt="..." />
+            </a>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <a href={{this.link}}>
+                <h5 class="card-title">{{this.title}}</h5>
+              </a>
+              <p class="card-text"> {{this.description}}</p>
+             <button data-id = {{this._id}} type="button" class="comment-btn btn btn-info">See Comments</button>
+             <button data-id = {{this._id}} type="button" class="write-btn btn btn-info">Write Comment</button>
+             <button data-id = {{this._id}} type="button" class="btn save-btn btn-warning"> <i class="fas fa-save"></i></button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      {{/each}} 
+      </div>
+      {{/if}}
+    </div>
+
+      <div  class="col-lg-4">
+        <header class="text-center">
+           <h6 class="comment-title">Comments for Article</h6>
+           <div class="comment-section">
+
+           </div>
+        </header>
+        <article>
+        </article>
+
+      </div>
+
+  </div>
+</div>
+
   </div>
 </div>

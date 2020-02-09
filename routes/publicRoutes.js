@@ -69,16 +69,6 @@ module.exports = function (app) {
 
     })
 
-    // db.books.find({ read: true }, function(error, found) {
-    //     // Show any errors
-    //     if (error) {
-    //       console.log(error);
-    //     }
-    //     else {
-    //       // Otherwise, send the books we found to the browser as a json
-    //       res.json(found);
-    //     }
-    //   });
 
         // Route for getting all Articles from the db
         app.get("/saved", function (req, res) {
