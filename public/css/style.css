@@ -29,3 +29,8 @@
 .comment-submit {
     margin-top:10px;
 }
+
+.wrapper {
+    max-height:500px;
+    overflow: scroll;
+}
