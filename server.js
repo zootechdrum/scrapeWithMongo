@@ -32,7 +32,7 @@ app.use(express.static("public"));
 // Use morgan logger for logging requests
 app.use(logger("dev"));
 
-mongoose.connect("mongodb://localhost/scraper"  || MlabUri  , { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true, useUnifiedTopology: true });
+mongoose.connect("mongodb://localhost/scraper"  || process.env.MlabUri  , { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true, useUnifiedTopology: true });
 
 
 // Routes
