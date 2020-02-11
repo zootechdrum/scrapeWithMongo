@@ -1,15 +1,15 @@
 $(document).ready(function () {
   // Grab the articles as a json
-  $.getJSON("/articles", function (data) {
+  // $.getJSON("/articles", function (data) {
 
-    for (var i = 0; i < data.length; i++) {
-      // Display the apropos information on the page
-      $(".content-wrapper").append(
-        "<img src = " + data[i].image + " >" +
-        "<div class='content-item' ><a data-id= " + data[i]._id + " href= " + data[i].link + " > " + data[i].title + "</a></div>"
-      );
-    }
-  });
+  //   for (var i = 0; i < data.length; i++) {
+  //     // Display the apropos information on the page
+  //     $(".content-wrapper").append(
+  //       "<img src = " + data[i].image + " >" +
+  //       "<div class='content-item' ><a data-id= " + data[i]._id + " href= " + data[i].link + " > " + data[i].title + "</a></div>"
+  //     );
+  //   }
+  // });
 
   $(document).on("click", ".deleteArticles-btn", function () {
 
