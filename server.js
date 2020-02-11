@@ -1,3 +1,4 @@
+require("dotenv").config();
 var express = require("express");
 var logger = require("morgan");
 var mongoose = require("mongoose");
@@ -31,7 +32,7 @@ app.use(express.static("public"));
 // Use morgan logger for logging requests
 app.use(logger("dev"));
 
-mongoose.connect("mongodb://localhost/scraper", { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true, useUnifiedTopology: true });
+mongoose.connect("mongodb://localhost/scraper"  || MlabUri  , { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true, useUnifiedTopology: true });
 
 
 // Routes
