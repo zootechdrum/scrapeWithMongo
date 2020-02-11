@@ -1,4 +1,4 @@
-// require("dotenv").config();
+require("dotenv").config();
 var express = require("express");
 var logger = require("morgan");
 var mongoose = require("mongoose");
@@ -33,9 +33,9 @@ app.use(express.static("public"));
 app.use(logger("dev"));
 // || "mongodb://localhost/scraper"
 
-var MONGODB_URI = "" ;
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scraper" ;
 
-mongoose.connect("mongodb://heroku_spqg6bvf:cesar2183790@ds163480.mlab.com:63480/heroku_spqg6bvf" , { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true, useUnifiedTopology: true });
+mongoose.connect("mongodb://webScraper:cesar2183790@ds163480.mlab.com:63480/heroku_spqg6bvf" , { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true, useUnifiedTopology: true });
 
 
 // Routes
