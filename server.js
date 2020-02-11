@@ -34,7 +34,7 @@ app.use(logger("dev"));
 
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scraper";
 
-// mongoose.connect(MONGODB_URI , { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true, useUnifiedTopology: true });
+mongoose.connect(MONGODB_URI , { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true, useUnifiedTopology: true });
 
 
 // Routes
