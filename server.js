@@ -33,9 +33,9 @@ app.use(express.static("public"));
 app.use(logger("dev"));
 // || "mongodb://localhost/scraper"
 
-var MONGODB_URI = "zootechdrum:deleteurspam951@ds163480.mlab.com:63480/heroku_spqg6bvf" ;
+var MONGODB_URI = "" ;
 
-mongoose.connect(MONGODB_URI , { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true, useUnifiedTopology: true });
+mongoose.connect("mongodb://heroku_spqg6bvf:cesar2183790@ds163480.mlab.com:63480/heroku_spqg6bvf" , { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true, useUnifiedTopology: true });
 
 
 // Routes
