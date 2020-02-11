@@ -31,7 +31,9 @@
     height:100%;
 }
 
-
+.save-active {
+    color: #24A0ED !important;
+}
 
 .comment-submit {
     margin-top:10px;
@@ -41,6 +43,8 @@
     max-height:500px;
     overflow: scroll;
 }
+
+
 
 .comment-section {
     min-height: 300px;

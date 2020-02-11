@@ -100,6 +100,9 @@ $(document).ready(function () {
 
 // When flopy disk is clicked on the article will be marked as saved
   $(document).on("click", ".save-btn", function () {
+
+    console.log($(this).addClass("save-active"))
+
     var thisId = $(this).attr("data-id");
 
     $.ajax({
