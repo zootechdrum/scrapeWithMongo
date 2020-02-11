@@ -18,7 +18,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Require all models
-var db = require("./models");
+// var db = require("./models");
 var PORT = process.env.PORT || 3001;
 
 
