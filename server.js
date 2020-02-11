@@ -31,8 +31,9 @@ app.use(express.static("public"));
 // Configure middleware
 // Use morgan logger for logging requests
 app.use(logger("dev"));
+// || "mongodb://localhost/scraper"
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scraper";
+var MONGODB_URI = "zootechdrum:deleteurspam951@ds163480.mlab.com:63480/heroku_spqg6bvf" ;
 
 mongoose.connect(MONGODB_URI , { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true, useUnifiedTopology: true });
 
