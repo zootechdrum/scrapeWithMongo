@@ -16,7 +16,7 @@ In this project, I created a web app that lets users view and leave comments on 
 9. Mongoose
 
 ## Mobile view
-![site on mobile view]("./public/image/mobile-read.png")
+![site on mobile view](./public/image/mobile-read.png)
 
 ## Desktop view
-![site on mobile view]("./public/image/desktop-read.png")
+![site on mobile view](./public/image/desktop-read.png)
