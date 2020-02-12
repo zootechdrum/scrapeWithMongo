@@ -20,3 +20,7 @@ In this project, I created a web app that lets users view and leave comments on 
 
 ## Desktop view
 ![site on mobile view](./public/image/desktop-read.png)
+
+## GIf of working App
+![example of working App](./public/image/scrape.gif)
+
