@@ -1,6 +1,6 @@
 # Scrape with Mongo and Mongoose
 
-#Descriptions 
+## Descriptions 
 In this project, I created a web app that lets users view and leave comments on Cracked blog post. I used  Mongoose and Cheerio  to scrape and save blog posts from cracked.com .
 
 ## Technolgies Used
