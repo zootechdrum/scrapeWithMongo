@@ -40,7 +40,7 @@ mongoose.connect(MONGODB_URI , { useNewUrlParser: true, useFindAndModify: false,
 
 // Routes
 require("./routes/publicRoutes")(app)
-
+//try to hide pw
 
 
 
