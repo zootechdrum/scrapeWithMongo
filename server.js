@@ -35,7 +35,7 @@ app.use(logger("dev"));
 
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scraper" ;
 
-mongoose.connect("mongodb://webScraper:cesar2183790@ds163480.mlab.com:63480/heroku_spqg6bvf" , { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true, useUnifiedTopology: true });
+mongoose.connect(MONGODB_URI , { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true, useUnifiedTopology: true });
 
 
 // Routes
