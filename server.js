@@ -30,13 +30,10 @@ app.use(express.static('public'))
 app.use(logger('dev'))
 // || "mongodb://localhost/scraper"
 
-mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb://localhost/fenderDefects',
-  {
-    useCreateIndex: true,
-    useNewUrlParser: true,
-  }
-)
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/scraper', {
+  useCreateIndex: true,
+  useNewUrlParser: true,
+})
 
 // Routes
 require('./routes/publicRoutes')(app)
