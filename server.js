@@ -1,52 +1,50 @@
-require("dotenv").config();
-var express = require("express");
-var logger = require("morgan");
-var mongoose = require("mongoose");
-const exphbs = require("express-handlebars");
+require('dotenv').config()
+var express = require('express')
+var logger = require('morgan')
+var mongoose = require('mongoose')
+const exphbs = require('express-handlebars')
 
 // Our scraping tools
 // Axios is a promised-based http library, similar to jQuery's Ajax method
 // It works on the client and on the server
-var axios = require("axios");
-var cheerio = require("cheerio");
+var axios = require('axios')
+var cheerio = require('cheerio')
 
 // Initialize Express
-var app = express();
+var app = express()
 
-
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
+app.set('view engine', 'handlebars')
 
 // Require all models
 // var db = require("./models");
-var PORT = process.env.PORT || 3001;
+var PORT = process.env.PORT || 3001
 
-
-
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 // Make public a static folder
-app.use(express.static("public"));
+app.use(express.static('public'))
 
 // Configure middleware
 // Use morgan logger for logging requests
-app.use(logger("dev"));
+app.use(logger('dev'))
 // || "mongodb://localhost/scraper"
 
-var MONGODB_URI = process.env.MONGODB_URIS || "mongodb://localhost/scraper" ;
+var MONGODB_URI = process.env.MONGODB_URIS || 'mongodb://localhost/scraper'
 
-mongoose.connect(MONGODB_URI , { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true, useUnifiedTopology: true });
-
+mongoose.connect(
+  process.env.MONGODB_URI || 'mongodb://localhost/fenderDefects',
+  {
+    useCreateIndex: true,
+    useNewUrlParser: true,
+  }
+)
 
 // Routes
-require("./routes/publicRoutes")(app)
+require('./routes/publicRoutes')(app)
 //try to hide pw
-
-
 
 // Start the server
 app.listen(PORT, function () {
-  console.log("App running on port " + PORT + "!");
-});
-
-
+  console.log('App running on port ' + PORT + '!')
+})
