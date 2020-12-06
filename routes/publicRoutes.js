@@ -13,13 +13,15 @@ module.exports = function (app) {
       });
   });
 
-  app.get("/scrape", function (req, res) {
+  app.get("/scrape",  function (req, res) {
+    const result = {};
+    const crackedArticles = [];
+    let arrayIndex = 0;
     axios.get("https://www.cracked.com/").then(function (response) {
       const $ = cheerio.load(response.data);
 
-      $(".content-cards-wrapper").each(function (i, element) {
-        const result = {};
 
+      $(".content-cards-wrapper").each(function (i, element) {
         // Grabs the title, image and link from cracked
         const title = $(this)
           .children(".content-cards-info")
@@ -39,41 +41,39 @@ module.exports = function (app) {
           image !== undefined &&
           title !== undefined &&
           podcast === false
-        ) {
-          (result.title = title),
-            (result.link = link),
-            (result.image = image),
-            //Second call to axios based on link parameter in results object
-            axios.get(result.link).then(function (response) {
-              var $ = cheerio.load(response.data);
-
-              $("meta[name='description']").each(function (i, element) {
-                var description = $(this).attr("content");
-
-                result.description = description;
-
-                db.Article.insertMany(result)
-                  .then(function (dbArticle) {
-                    // View the added result in the console
-                    console.log(dbArticle);
-                  })
-                  .catch(function (err) {
-                    // If an error occurred, log it
-                    console.log(err);
-                  });
-              });
-            });
+        ) 
+        {
+          console.log(link)
+            crackedArticles[arrayIndex] = {title:title,image:image,link:link}
+          arrayIndex++
         }
-      });
+        
+            //Second call to axios based on link parameter in results object
+            //axios.get(result.link).then(function (response) {
+              //var $ = cheerio.load(response.data);
 
-      function redirect() {
-        res.redirect("/");
-      }
+              //$("meta[name='description']").each(function (j, element) {
+               // var description = $(this).attr("content");
 
-      setTimeout(redirect, 3000);
-    });
-  });
-
+                //result.description = description;
+                  //            db.Article.insertMany(result)
+                  //.then(function (dbArticle) {
+                   // console.log(i)
+                   //if( i + 1 === undefined ){
+                     //console.log(i) 
+                     //res.redirect('/')
+                   //}
+                   // console.log(dbArticle)
+                    // View the added result in the console
+                  //})
+                  //.catch(function (err) {
+                    // If an error occurred, log it
+                    //console.log(err)
+               // })
+                 }) 
+      console.log(crackedArticles)
+  })
+  })
   // Route for getting all saved Articles from the db
   app.get("/saved", function (req, res) {
     db.Article.find({ saved: true })
@@ -104,7 +104,7 @@ module.exports = function (app) {
   });
 
   app.delete("/articles", function (req, res) {
-    // Grab every document in the Articles collection
+    //Delete all the articles from our DB
     db.Article.remove({}).then(function (data) {
       console.log(data);
       res.send(data);
@@ -112,9 +112,7 @@ module.exports = function (app) {
   });
 
   app.get("/articles/:id", function (req, res) {
-    // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
     db.Article.findOne({ _id: req.params.id })
-      // ..and populate all of the comments associated with it
       .populate("comment")
       .then(function (dbArticle) {
         res.json(dbArticle);
@@ -131,9 +129,6 @@ module.exports = function (app) {
     db.Comment.create(req.body)
       .then(function (dbComment) {
         console.log(dbComment._id);
-        //     // If a Comment was created successfully, find one Article with an `_id` equal to `req.params.id`. Update the Article to be associated with the new Note
-        //     // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
-        //     // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
         return db.Article.findOneAndUpdate(
           { _id: req.params.id },
           { $push: { comment: dbComment._id } },
@@ -152,16 +147,11 @@ module.exports = function (app) {
   });
   // Mark a Article as having been Saved
   app.put("/markSaved/:id", function (req, res) {
-    console.log("route hit");
-
-    // Update a doc in the article collection with an ObjectId matching
-    // the id parameter in the url
     db.Article.update(
       {
         _id: req.params.id,
       },
       {
-        // Set "saved" to true for the article we specified
         $set: {
           saved: true,
         },
