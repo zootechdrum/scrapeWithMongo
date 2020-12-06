@@ -16,6 +16,9 @@ module.exports = function (app) {
   app.get("/scrape",  function (req, res) {
     const result = {};
     const crackedArticles = [];
+    
+    //We need arrayIndex to correctly add to crackedArticles 
+    // THe loop will sometimes skip a card which leaves i in our each loop useless. 
     let arrayIndex = 0;
     axios.get("https://www.cracked.com/").then(function (response) {
       const $ = cheerio.load(response.data);
@@ -43,7 +46,6 @@ module.exports = function (app) {
           podcast === false
         ) 
         {
-          console.log(link)
             crackedArticles[arrayIndex] = {title:title,image:image,link:link}
           arrayIndex++
         }
@@ -72,7 +74,7 @@ module.exports = function (app) {
                // })
                  }) 
       console.log(crackedArticles)
-  })
+    }).then(() => {console.log(crackedArticles)})
   })
   // Route for getting all saved Articles from the db
   app.get("/saved", function (req, res) {
