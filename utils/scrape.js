@@ -1,7 +1,10 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 const scrapeSite = () => {
-    const result = {};
+  
+  return new Promise(function (resolve, reject ) {
+
+  const result = {};
     const crackedArticles = [];
     
     //We need arrayIndex to correctly add to crackedArticles 
@@ -51,8 +54,15 @@ let arrTracker = 0;
         getDescription()
       })
         
-    }else {return crackedArticles}
+    }else {
+   resolve(crackedArticles) 
+    }
       }
     })
+  })
 }
+
+
+
+
 module.exports = scrapeSite;
