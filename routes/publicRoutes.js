@@ -13,8 +13,9 @@ module.exports = function (app) {
       });
   });
 
-  app.get("/scrape",  function (req, res) {
-    scrapeSite()
+  app.get("/scrape", async function (req, res) {
+    const x = await scrapeSite()
+    console.log(x)
   })
   // Route for getting all saved Articles from the db
   app.get("/saved", function (req, res) {

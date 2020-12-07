@@ -38,32 +38,21 @@ const scrapeSite = () => {
         }
 			}) 
     }).then(() => {
-                console.log(crackedArticles) 
-for(article of crackedArticles){
-  console.log(article.link)
-}     
-//axios.get(result.link).then(function (response) {
-   //var $ = cheerio.load(response.data);
-                                                                
-//m  $("meta[name='description']").each(function (j, element) {odule.exports = scrapeSite
-  //   var description = $(this).attr("content");
-                                                                
-  //   result.description = description;
-//                   db.Article.insertMany(result)
-    //   .then(function (dbArticle) {
-        // console.log(i)
-      //  if( i + 1 === undefined ){
-          //console.log(i) 
-          //res.redirect('/')
-        //}
-         //console.log(dbArticle)
-         // View the added result in the console
-      // })
-       //.catch(function (err) {
-         // If an error occurred, log it
-         //console.log(err)
-    // })
+const lengthOfArticleArry = crackedArticles.length
+let arrTracker = 0; 
+      getDescription()
+      function getDescription(){
+    if(arrTracker < lengthOfArticleArry){
+      axios.get(crackedArticles[arrTracker].link).then((response) => {
+     const $ = cheerio.load(response.data)
+      const description = $("meta[name='description']").attr("content")
+      crackedArticles[arrTracker].description = description
+        arrTracker++
+        getDescription()
       })
+        
+    }else {return crackedArticles}
+      }
+    })
 }
-
 module.exports = scrapeSite;
