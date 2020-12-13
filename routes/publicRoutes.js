@@ -14,8 +14,11 @@ module.exports = function (app) {
     })
 
     app.get('/scrape', async function (req, res) {
-        const x = await scrapeSite()
-        console.log(x)
+        const getArticles = await scrapeSite()
+        const saveArticles = await db.Article.create(getArticles)
+        res.render('index', {
+            blogs: saveArticles,
+        })
     })
     // Route for getting all saved Articles from the db
     app.get('/saved', function (req, res) {

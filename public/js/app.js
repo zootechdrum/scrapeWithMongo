@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $(document).on('click', '.deleteArticles-btn', function () {
-        var thisId = $(this).attr('data-id')
+        const thisId = $(this).attr('data-id')
 
         // Now make an ajax call for the Article
         $.ajax({
@@ -9,12 +9,15 @@ $(document).ready(function () {
         })
             // With that done, add the note information to the page
             .then(function (data) {
-                location.reload('index.html')
+                location.replace('/')
             })
     })
-
+    $(document).on('click', '.scrape-btn', function () {
+        $('.main-content-container').empty()
+        $('.main-content-container').append("<div class='spin'></div>")
+    })
     $(document).on('click', '.comment-btn', function () {
-        var thisId = $(this).attr('data-id')
+        const thisId = $(this).attr('data-id')
         console.log(thisId + ' hello')
 
         // Now make an ajax call for the Article
@@ -33,7 +36,7 @@ $(document).ready(function () {
                     )
                 } else {
                     $('.comment-section').empty()
-                    for (var i = 0; i < data.comment.length; i++) {
+                    for (const i = 0; i < data.comment.length; i++) {
                         $('.comment-section')
                             .append(
                                 "<p class='comment alert-dark'>" +
@@ -49,12 +52,12 @@ $(document).ready(function () {
     $(document).on('click', '.write-btn', function () {
         $('.comment-section').empty()
 
-        var thisId = $(this).attr('data-id')
+        const thisId = $(this).attr('data-id')
 
-        var input = $(
+        const input = $(
             "<input class= commentInput type='text' placeholder='Write Comment' required>"
         )
-        var submitBtn = $(
+        const submitBtn = $(
             '<div><button data-id=' +
                 thisId +
                 " class='comment-submit btn btn-info' >Submit</button></div>"
@@ -64,9 +67,9 @@ $(document).ready(function () {
     })
 
     $(document).on('click', '.comment-submit', function () {
-        var thisId = $(this).attr('data-id')
+        const thisId = $(this).attr('data-id')
 
-        var inputValue = $('.commentInput').val()
+        const inputValue = $('.commentInput').val()
 
         if (!inputValue) {
             return
@@ -77,7 +80,6 @@ $(document).ready(function () {
             url: '/articles/' + thisId,
             data: {
                 body: inputValue,
-                // Value taken from comment textarea
             },
         })
             // With that done
@@ -93,7 +95,7 @@ $(document).ready(function () {
     $(document).on('click', '.save-btn', function () {
         console.log($(this).addClass('save-active'))
 
-        var thisId = $(this).attr('data-id')
+        const thisId = $(this).attr('data-id')
 
         $.ajax({
             method: 'PUT',

@@ -1,24 +1,24 @@
 require('dotenv').config()
 const express = require('express')
-var logger = require('morgan')
-var mongoose = require('mongoose')
+const logger = require('morgan')
+const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
 
 // Our scraping tools
 // Axios is a promised-based http library, similar to jQuery's Ajax method
 // It works on the client and on the server
-var axios = require('axios')
-var cheerio = require('cheerio')
+const axios = require('axios')
+const cheerio = require('cheerio')
 
 // Initialize Express
-var app = express()
+const app = express()
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
 // Require all models
-// var db = require("./models");
-var PORT = process.env.PORT || 3001
+// const db = require("./models");
+const PORT = process.env.PORT || 3001
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
