@@ -1,7 +1,8 @@
 # Scrape with Mongo and Mongoose
 
-## Descriptions 
-In this project, I created a web app that lets users view and leave comments on Cracked blog post. I used  Mongoose and Cheerio  to scrape and save blog posts from cracked.com .
+## Descriptions
+
+In this project, I created a web app that lets users view and leave comments on Cracked blog post. I used Mongoose and Cheerio to scrape and save blog posts from cracked.com .
 
 ## Technolgies Used
 
@@ -16,11 +17,13 @@ In this project, I created a web app that lets users view and leave comments on 
 9. Mongoose
 
 ## Mobile view
+
 ![site on mobile view](./public/image/mobile-read.png)
 
 ## Desktop view
+
 ![site on mobile view](./public/image/desktop-read.png)
 
 ## GIf of working App
-![example of working App](./public/image/scrape.gif)
 
+![example of working App](./public/image/scrape.gif)

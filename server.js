@@ -31,8 +31,8 @@ app.use(logger('dev'))
 // || "mongodb://localhost/scraper"
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/scraper', {
-  useCreateIndex: true,
-  useNewUrlParser: true,
+    useCreateIndex: true,
+    useNewUrlParser: true,
 })
 
 // Routes
@@ -41,5 +41,5 @@ require('./routes/publicRoutes')(app)
 
 // Start the server
 app.listen(PORT, function () {
-  console.log('App running on port ' + PORT + '!')
+    console.log('App running on port ' + PORT + '!')
 })

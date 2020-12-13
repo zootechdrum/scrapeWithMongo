@@ -1,17 +1,17 @@
-
 .navbar-brand > img {
-    height:100px;
+    height: 100px;
     width: 100px;
 }
 
 .jumbotron {
-    background-image: url("../image/blog-success.jpeg");
+    background-image: url('../image/blog-success.jpeg');
     background-size: auto 100%;
-    background-repeat: no-repeat;    
+    background-repeat: no-repeat;
 }
 
-.scrape-btn, .deleteArticles-btn {
-    margin:5px;
+.scrape-btn,
+.deleteArticles-btn {
+    margin: 5px;
 }
 
 .comment {
@@ -28,23 +28,21 @@
 }
 
 .card-img {
-    height:100%;
+    height: 100%;
 }
 
 .save-active {
-    color: #24A0ED !important;
+    color: #24a0ed !important;
 }
 
 .comment-submit {
-    margin-top:10px;
+    margin-top: 10px;
 }
 
 .wrapper {
-    max-height:500px;
+    max-height: 500px;
     overflow: scroll;
 }
-
-
 
 .comment-section {
     min-height: 300px;
@@ -57,10 +55,9 @@
 @media only screen and (max-width: 600px) {
     .jumbotron {
         background-image: none;
-    
     }
     .save-btn {
-        width:100%;
+        width: 100%;
         margin-top: 10px;
     }
-  }
+}
