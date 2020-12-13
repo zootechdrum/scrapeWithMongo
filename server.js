@@ -1,5 +1,5 @@
 require('dotenv').config()
-var express = require('express')
+const express = require('express')
 var logger = require('morgan')
 var mongoose = require('mongoose')
 const exphbs = require('express-handlebars')

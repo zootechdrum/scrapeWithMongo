@@ -25,7 +25,14 @@
     "mongoose": "^5.8.10",
     "morgan": "^1.9.1"
   },
+  "prettier": {
+  "trailingComma": "es5",
+  "tabWidth": 4,
+  "semi": false,
+  "singleQuote": true
+  },
   "devDependencies": {
-    "handlebars": "^4.5.0"
+    "handlebars": "^4.5.0",
+    "prettier": "2.2.1" 
   }
 }
